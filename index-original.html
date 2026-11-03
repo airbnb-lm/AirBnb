@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apartamentos no Rio de Janeiro | Ipanema &amp; Leblon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:    #c9a84c;
+      --gold-lt: #e8d5a3;
+      --dark:    #1a1a2e;
+      --mid:     #2d2d44;
+      --cream:   #faf8f3;
+      --card-bg: #ffffff;
+      --text:    #2c2c3a;
+      --muted:   #6b6b80;
+      --radius:  18px;
+      --shadow:  0 8px 40px rgba(0,0,0,.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+     background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 60%, #3a2e5a 100%);
+	 
+      color: #fff;
+      text-align: center;
+      padding: 50px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;      
+     
+	  opacity: .9;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.4);
+      color: var(--gold-lt);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.18;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .hero h1 span { color: #E3BA00; }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: rgba(255,255,255,.72);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      font-weight: 300;
+      line-height: 1.7;
+      position: relative;
+    }
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 44px;
+      border-radius: 2px;
+      position: relative;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      position: relative;
+	  
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat strong {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #E3BA00;
+      font-family: 'Playfair Display', serif;
+    }
+    .hero-stat span {
+      font-size: .78rem;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 72px 24px 80px;
+    }
+    .section-label {
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      text-align: center;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: .96rem;
+      margin-bottom: 56px;
+      font-weight: 300;
+    }
+
+    /* ── CARDS ── */
+    .cards { display: flex; flex-direction: column; gap: 32px; }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      transition: transform .28s ease, box-shadow .28s ease;
+      border: 1px solid rgba(201,168,76,.08);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 56px rgba(0,0,0,.14);
+    }
+
+    .card-img {
+      flex: 0 0 320px;
+      min-height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    /* Placeholder when no real image is available */
+    .card-img-placeholder {
+      flex: 0 0 320px;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      font-size: .78rem;
+      color: rgba(255,255,255,.5);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .card-img-placeholder svg { opacity: .45; }
+	.card-img-placeholder img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+	}
+
+    /* Individual gradient colours per card */
+    .card:nth-child(1) .card-img-placeholder { background: linear-gradient(145deg, #1f3a5f 0%, #2c5282 100%); }
+    .card:nth-child(2) .card-img-placeholder { background: linear-gradient(145deg, #1a3a2a 0%, #276749 100%); }
+    .card:nth-child(3) .card-img-placeholder { background: linear-gradient(145deg, #1a2a4a 0%, #2b4590 100%); }
+    .card:nth-child(4) .card-img-placeholder { background: linear-gradient(145deg, #1a2a4a 0%, #2b4590 100%); }
+
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 36px 40px;
+    }
+
+    .card-tag {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 16px;
+    }
+    .card-desc {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+    .card-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .pill {
+      background: rgba(201,168,76,.10);
+      color: #8a6a1a;
+      border: 1px solid rgba(201,168,76,.25);
+      font-size: .72rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background:#FF5A5F;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background .22s ease, transform .18s ease;
+      letter-spacing: .02em;
+      width: fit-content;
+    }
+    .cta-btn:hover { background: var(--gold); transform: scale(1.03); }
+    .cta-btn svg { flex-shrink: 0; }
+
+    /* ── TRUST BAR ── */
+    .trust {
+      background: var(--dark);
+      color: rgba(255,255,255,.65);
+      text-align: center;
+      padding: 36px 24px;
+    }
+    .trust-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .84rem;
+    }
+    .trust-item svg { color: var(--gold); flex-shrink: 0; }
+    .trust-divider { width: 1px; height: 28px; background: rgba(255,255,255,.12); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111122;
+      color: rgba(255,255,255,.35);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: .78rem;
+      line-height: 1.7;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .card { flex-direction: column; }
+      .card-img, .card-img-placeholder { flex: none; width: 100%; min-height: 210px; }
+      .card-body { padding: 28px 24px; }
+      .hero-stats { gap: 28px; }
+      .trust-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-badge">🌊 Ipanema &amp; Leblon · Rio de Janeiro</div>
+    <h1>Desperte com o <BR><span>Rio de Janeiro</span> <BR>pela janela</h1>
+    <p>Apartamentos perfeitos para você viver o melhor do Rio. <BR>A poucos passos das praias mais icônicas do mundo.</p>
+    <div class="hero-divider"></div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>4</strong><span>Apartamentos</span></div>
+      <div class="hero-stat"><strong>Ao lado</strong><span>Da Praia</span></div>
+      <div class="hero-stat"><strong>★ 5.0</strong><span>Avaliações</span></div> 
+    </div>
+  </header>
+
+  <!-- LISTINGS -->
+  <main class="section">
+    <p class="section-label">Nossas opções de hospedagem</p>
+    <h2 class="section-title">Escolha o seu apartamento ideal</h2>
+    <p class="section-sub">Cada espaço foi pensado para oferecer conforto, estilo e localização privilegiada.</p>
+
+    <div class="cards">
+
+      <!-- CARD 1 -->
+      <article class="card">
+        <div class="card-img-placeholder">
+          <img src="ipa.avif" alt="Vista do Rio de Janeiro">
+		  <!--<svg xmlns="rio.svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>-->
+          
+        </div>
+        <div class="card-body">
+          <div>
+            <p class="card-tag">✨ Destaque · Ipanema</p>
+            <h3 class="card-title">VIP IPA | Rooftop Vista 360° Espetacular do Rio/RJ</h3>
+            <p class="card-desc">Um apartamento de alto padrão com acesso exclusivo a um rooftop panorâmico, vista de 360° do Rio e seus principais pontos turísticos. <br>A experiência definitiva para quem quer viver a cidade em grande estilo.</p>
+            <div class="card-pills">
+              <span class="pill">🏙️ Vista 360°</span>
+              <span class="pill">🌅 Rooftop Exclusivo</span>
+              <span class="pill">📍 Ipanema</span>
+              <span class="pill">⭐ Top Rated</span>
+            </div>
+          </div>
+          <a class="cta-btn" href="https://www.airbnb.com.br/rooms/1747279036411562012?unique_share_id=13507926-6bfc-45f6-8e7b-b1afb8d810d5&viralityEntryPoint=1&s=76" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver no Airbnb
+          </a>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="card">
+        <div class="card-img-placeholder">
+           <img src="green.avif" alt="Vista do Rio de Janeiro">
+        </div>
+        <div class="card-body">
+          <div>
+            <p class="card-tag">🌿 Natureza &amp; Conforto · Leblon</p>
+            <h3 class="card-title">Double Green a 6min da Praia, no coração do Leblon</h3>
+            <p class="card-desc">Serenidade e sofisticação no bairro mais charmoso do Rio. A 6 minutos a pé da praia do Leblon, rodeado de restaurantes premiados, bares e o melhor da vida carioca.</p>
+            <div class="card-pills">
+              <span class="pill">🏖️ 6min da Praia</span>
+              <span class="pill">🎨 Design Moderno</span>
+              <span class="pill">📍 Leblon</span>
+			   <span class="pill">🍽️ Gastronomia</span>
+            </div>
+          </div>
+          <a class="cta-btn" href="https://www.airbnb.com.br/rooms/1546424493087218972?viralityEntryPoint=1&s=76&source_impression_id=p3_1786461234_P3iH-7tY6zxAQcGO" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver no Airbnb
+          </a>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="card">
+        <div class="card-img-placeholder">
+           <img src="blue.avif" alt="Vista do Rio de Janeiro">
+        </div>
+        <div class="card-body">
+          <div>
+            <p class="card-tag">💙 Estilo &amp; Praticidade · Leblon</p>
+            <h3 class="card-title">Studio Blue a 6min da Praia, no coração do Leblon</h3>
+            <p class="card-desc">O equilíbrio perfeito entre design moderno e localização imbatível. Um studio elegante e funcional para quem quer estar no centro de tudo, no melhor bairro do Rio.</p>
+            <div class="card-pills">
+              <span class="pill">🏖️ 6min da Praia</span>
+              <span class="pill">🎨 Design Moderno</span>
+              <span class="pill">📍 Leblon</span>
+			   <span class="pill">🍽️ Gastronomia</span>
+             
+            </div>
+          </div>
+          <a class="cta-btn" href="https://www.airbnb.com.br/rooms/1557915485002194368?viralityEntryPoint=1&s=76&source_impression_id=p3_1786461196_P3W7WPPY-ZBM3DiV" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver no Airbnb
+          </a>
+        </div>
+      </article>
+
+		 <!-- CARD 4 -->
+      <article class="card">
+        <div class="card-img-placeholder">
+           <img src="oliva.avif" alt="Vista do Rio de Janeiro">
+        </div>
+        <div class="card-body">
+          <div>
+            <p class="card-tag">💸 Melhor Custo &amp; Benefício · Leblon</p>
+            <h3 class="card-title">Oliva, o melhor custo benefício do Leblon</h3>
+            <p class="card-desc">O equilíbrio perfeito entre localização e preços que cabem no seu bolso. Um apartamento para até 4 pessoas, reformado, próximo a supermercados, bares, praia e lagoa Rodrigues de Freitas.</p>
+            <div class="card-pills">
+              <span class="pill">🏖️ 10 min da Praia</span>
+              <span class="pill">🎨 Reformado</span>
+              <span class="pill">📍 Leblon</span>
+			   <span class="pill">💸 Praticidade e economia</span>
+             
+            </div>
+          </div>
+          <a class="cta-btn" href="https://www.airbnb.com.br/rooms/1790201971585175550?check_in=2026-10-09&check_out=2026-10-12&guests=4&adults=2&s=67&unique_share_id=5194791d-8adb-40d2-8a4c-dc01dd45d600" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver no Airbnb
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- TRUST BAR -->
+  <section class="trust">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Reserva 100% segura via Airbnb</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Anfitriões com avaliações 5 estrelas</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Check-in flexível e sem burocracia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 · Apartamentos no Rio de Janeiro · Ipanema &amp; Leblon</p>
+    <p style="margin-top:6px;">Reservas realizadas com total segurança pela plataforma <a href="https://www.airbnb.com.br" target="_blank" rel="noopener">Airbnb</a>.</p>
+  </footer>
+
+</body>
+</html>
