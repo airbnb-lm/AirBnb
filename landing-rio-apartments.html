@@ -1,187 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17363a">
-  <meta name="description" content="Apartamentos selecionados em Ipanema e Leblon, no Rio de Janeiro. Conheça nossas hospedagens e consulte os anúncios diretamente no Airbnb.">
-  <meta property="og:title" content="Rio Apartments | Ipanema & Leblon">
-  <meta property="og:description" content="Viva o Rio. Sinta-se em casa. Apartamentos selecionados na Zona Sul.">
-  <meta property="og:image" content="rio-sunset.webp">
-  <title>Rio Apartments | Ipanema &amp; Leblon</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --ink:#17272b; --deep:#17363a; --deep-2:#0e4548; --gold:#e6ad54;
-      --gold-light:#f5d59b; --paper:#faf7f1; --muted:#697477; --line:#e9e2d8;
-      --shadow:0 16px 44px rgba(35,45,43,.09); --radius:22px;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;scroll-padding-top:24px}
-    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
-    a{color:inherit}
-    .hero{
-      min-height:390px; position:relative; color:#fff; overflow:hidden;
-      background:linear-gradient(90deg,rgba(13,27,35,.76) 0%,rgba(16,30,38,.48) 44%,rgba(16,30,38,.08) 100%),url('rio-sunset.webp') center 52%/cover no-repeat;
-    }
-    .hero:after{content:"";position:absolute;inset:auto 0 0;height:90px;background:linear-gradient(transparent,rgba(10,25,31,.2));pointer-events:none}
-    .nav{position:relative;z-index:1;max-width:1180px;margin:auto;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand-mark{width:42px;height:32px;border-bottom:2px solid var(--gold);border-radius:50%;position:relative;display:block}
-    .brand-mark:before{content:"";position:absolute;width:23px;height:23px;border-left:2px solid var(--gold);border-top:2px solid var(--gold);transform:rotate(45deg);left:9px;top:5px;border-radius:4px}
-    .brand strong{display:block;font-size:1.04rem;letter-spacing:.12em;line-height:1.1}
-    .brand small{display:block;font-size:.65rem;letter-spacing:.28em;color:var(--gold-light);margin-top:5px}
-    .nav-links{display:flex;align-items:center;gap:28px;font-size:.86rem}
-    .nav-links a{text-decoration:none;color:rgba(255,255,255,.92);transition:color .2s}
-    .nav-links a:hover{color:var(--gold-light)}
-    .hero-content{position:relative;z-index:1;max-width:1180px;margin:auto;padding:23px 28px 54px}
-    .eyebrow{color:var(--gold-light);font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:12px}
-    h1{font-family:'Playfair Display',serif;font-size:clamp(2.65rem,6vw,4.65rem);line-height:1.03;letter-spacing:-.035em;max-width:700px;font-weight:600;text-wrap:balance}
-    h1 span{color:#f4c77d}
-    .hero-copy{font-size:1.02rem;color:rgba(255,255,255,.88);max-width:560px;margin:17px 0 25px;line-height:1.65}
-    .hero-cta{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#f5c36e,#e6a944);color:#17272b;text-decoration:none;font-weight:700;font-size:.88rem;padding:14px 22px;border-radius:999px;box-shadow:0 8px 24px rgba(15,25,28,.22);transition:transform .2s,box-shadow .2s}
-    .hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,25,28,.28)}
-    .arrow{font-size:1.1rem}
-    main{max-width:1180px;margin:auto;padding:45px 28px 68px}
-    .section-head{text-align:center;margin:0 auto 30px}
-    .section-kicker{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#b47c32;font-weight:700;margin-bottom:8px}
-    h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:600;letter-spacing:-.025em;line-height:1.15}
-    .section-head p{color:var(--muted);margin-top:9px;font-size:.95rem}
-    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;min-width:0}
-    .card:hover{transform:translateY(-5px);box-shadow:0 22px 52px rgba(35,45,43,.14)}
-    .card-media{height:245px;position:relative;overflow:hidden;background:#e8e1d7}
-    .card-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
-    .card:hover .card-media img{transform:scale(1.035)}
-    .location{position:absolute;top:16px;left:16px;background:rgba(250,247,241,.94);color:var(--deep);border-radius:999px;padding:7px 13px;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(8px)}
-    .card-content{padding:23px 25px 25px;display:flex;flex-direction:column;flex:1}
-    .card-tag{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#b47c32;font-weight:700;margin-bottom:7px}
-    h3{font-family:'Playfair Display',serif;font-size:1.55rem;line-height:1.2;font-weight:600;margin-bottom:8px}
-    .desc{font-size:.88rem;color:var(--muted);line-height:1.65;min-height:58px}
-    .features{display:flex;flex-wrap:wrap;gap:9px 17px;margin:18px 0 21px;padding-top:15px;border-top:1px solid #eee9e1}
-    .feature{display:inline-flex;align-items:center;gap:7px;color:#485457;font-size:.76rem;white-space:nowrap}
-    .feature svg{width:16px;height:16px;color:#a8793d;flex-shrink:0}
-    .card-cta{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:var(--deep);color:white;border-radius:12px;padding:13px 18px;font-size:.82rem;font-weight:700;letter-spacing:.045em;transition:background .2s,transform .2s}
-    .card-cta:hover{background:#216064;transform:translateY(-1px)}
-    .card-cta svg{width:18px;height:18px}
-    .trust{background:var(--deep);color:#fff;padding:29px 24px}
-    .trust-inner{max-width:1080px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .trust-item{display:flex;align-items:center;justify-content:center;gap:13px}
-    .trust-icon{color:var(--gold-light);font-size:1.5rem}
-    .trust-item strong{display:block;font-size:.85rem}
-    .trust-item span:last-child{display:block;color:rgba(255,255,255,.66);font-size:.74rem;margin-top:2px}
-    footer{text-align:center;padding:24px;color:#7c8584;font-size:.75rem;line-height:1.8}
-    footer a{color:#9a6b2f;text-decoration:none}
-    @media(max-width:760px){
-      .hero{min-height:390px;background-position:58% center}
-      .nav{padding:18px 20px} .nav-links{gap:14px} .nav-links a:nth-child(2){display:none}
-      .hero-content{padding:35px 22px 44px} h1{font-size:clamp(2.55rem,11vw,3.7rem)}
-      main{padding:38px 20px 52px} .cards{gap:18px} .card-media{height:205px}
-      .card-content{padding:19px} h3{font-size:1.35rem} .desc{min-height:0}
-      .trust-inner{gap:18px}
-    }
-    @media(max-width:560px){
-      .hero{min-height:420px;background-position:61% center}
-      .nav-links{font-size:.76rem;gap:12px} .brand strong{font-size:.88rem}
-      .brand small{font-size:.56rem} .brand-mark{width:34px}
-      .hero-content{padding-top:48px} .hero-copy{font-size:.93rem;max-width:370px}
-      .cards{grid-template-columns:1fr} .card-media{height:235px}
-      .trust-inner{grid-template-columns:1fr;max-width:290px;gap:17px}
-      .trust-item{justify-content:flex-start}
-    }
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#062b32">
+<meta name="description" content="Apartamentos selecionados em Ipanema e Leblon. Viva o Rio e sinta-se em casa.">
+<meta property="og:title" content="Rio Apartments | Ipanema · Leblon">
+<meta property="og:description" content="Apartamentos selecionados na Zona Sul do Rio de Janeiro.">
+<title>Rio Apartments | Ipanema · Leblon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#062b32;--ink:#101f25;--gold:#eab64e;--cream:#faf6ef;--muted:#657074;--line:#e9e0d5;--shadow:0 5px 16px rgba(31,36,34,.13)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--cream)}
+.topbar{height:79px;background:linear-gradient(110deg,#05272e,#092f36);color:white;display:flex;align-items:center;justify-content:space-between;padding:0 max(calc((100vw - 1350px)/2),6.2%);gap:28px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff;white-space:nowrap}
+.brand-mark{width:62px;height:42px;display:block}
+.brand-name{font-family:'Playfair Display',serif;font-size:1.27rem;font-weight:700;letter-spacing:.06em;line-height:1.1}
+.brand-sub{display:block;text-align:center;font-size:.66rem;letter-spacing:.2em;margin-top:4px;font-weight:600}
+.navlinks{display:flex;align-items:center;gap:38px;margin-left:auto}
+.navlinks a{color:#fff;text-decoration:none;font-family:'Playfair Display',serif;font-size:1.05rem}
+.navlinks a:hover{color:var(--gold)}.navlinks .nav-cta:hover{color:#171b1a!important;filter:brightness(1.04)}
+.nav-cta{background:linear-gradient(110deg,#ffe09a,#e6ad40);color:#171b1a!important;border-radius:30px;padding:10px 18px;font-family:'DM Sans',sans-serif!important;font-weight:700;font-size:.86rem!important;white-space:nowrap;text-decoration:none}
+.hero-desktop{display:block;width:100%;height:auto;aspect-ratio:1536/335;object-fit:cover;cursor:pointer}
+.hero-mobile{display:none}
+.proofs{min-height:94px;display:flex;align-items:center;justify-content:center;gap:7.5%;padding:15px 24px;background:var(--cream)}
+.proof{display:flex;align-items:center;gap:18px;min-width:220px}
+.proof-icon{width:43px;height:48px;flex:none;color:#0c2026}
+.proof strong{display:block;font-family:'Playfair Display',serif;font-size:1.05rem;line-height:1.25}
+.proof small{font-size:.85rem;color:#1b2529}
+.proof+.proof{border-left:1px solid #d8cfc3;padding-left:6%}
+main{max-width:1450px;margin:auto;padding:10px 3.7% 50px}
+.section-kicker{display:flex;align-items:center;justify-content:center;gap:18px;color:#a86d18;font-weight:700;letter-spacing:.14em;font-size:.82rem;text-transform:uppercase;margin:6px 0 7px}
+.section-kicker:before,.section-kicker:after{content:"";height:1px;width:80px;background:#c58a37}
+h1,h2,h3{font-family:'Playfair Display',serif}
+h2{font-size:clamp(2rem,3vw,2.55rem);text-align:center;font-weight:600;letter-spacing:-.025em;margin-bottom:24px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{background:#fffdfa;border:1px solid #e8e0d6;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0;transition:transform .22s,box-shadow .22s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(31,36,34,.17)}
+.card-image{height:174px;position:relative;background:#ddd;overflow:hidden}
+.card-image img{width:100%;height:100%;object-fit:cover;display:block}
+.tag{position:absolute;top:12px;left:13px;background:#082b32;color:white;border-radius:30px;padding:6px 12px;font-size:.65rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.card-content{padding:10px 20px 16px;display:flex;flex-direction:column;flex:1}
+h3{font-size:1.42rem;line-height:1.15;margin-bottom:3px}
+.place{font-size:.91rem;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.place svg{width:16px;height:16px;flex:none}
+.desc{font-family:'Playfair Display',serif;font-size:.91rem;line-height:1.32;min-height:48px;margin-bottom:10px}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:.76rem;white-space:nowrap;margin:2px 0 12px}
+.meta span{display:flex;align-items:center;gap:5px}
+.meta svg{width:18px;height:18px}
+.airbnb-btn{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:auto;border-radius:30px;background:linear-gradient(110deg,#ffdb8c,#e2a63e);border:1px solid #d89e37;color:#101b1d;text-decoration:none;font-weight:700;font-size:.84rem;padding:10px 12px;min-height:41px}
+.airbnb-btn:hover{filter:brightness(1.04)}
+.airbnb-btn svg{width:17px;height:17px}
+footer{background:#082d34;color:#dce3df;text-align:center;padding:22px 15px;font-size:.76rem;line-height:1.8}footer a{color:#f4c66f}
+@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card-image{height:210px}.proofs{gap:3%}.proof+.proof{padding-left:3%}}
+@media(max-width:650px){
+.topbar{height:72px;padding:0 18px}.brand-mark{width:43px;height:34px}.brand-name{font-size:.94rem}.brand-sub{font-size:.55rem}
+.navlinks a:not(.nav-cta){display:none}.nav-cta{padding:9px 13px;font-size:.75rem!important}
+.hero-desktop{display:none}.hero-mobile{display:flex;min-height:365px;padding:36px 23px 30px;flex-direction:column;justify-content:center;color:white;background:linear-gradient(90deg,rgba(5,24,32,.72),rgba(5,24,32,.2)),url('hero-rio-mobile.webp') center/cover no-repeat}
+.hero-mobile .eyebrow{font-size:.68rem;letter-spacing:.17em;color:#ffe0a0;font-weight:700;text-transform:uppercase;margin-bottom:13px}
+.hero-mobile h1{font-size:2.65rem;line-height:1.02;max-width:420px;margin-bottom:13px}
+.hero-mobile h1 span{color:#ffd27a}.hero-mobile p{font-size:.92rem;line-height:1.55;max-width:420px;margin-bottom:20px}
+.mobile-cta{align-self:flex-start;background:linear-gradient(110deg,#ffe09a,#e6ad40);color:#152226;text-decoration:none;border-radius:30px;padding:12px 17px;font-size:.82rem;font-weight:700}
+.proofs{display:grid;grid-template-columns:1fr;gap:14px;padding:20px 25px}.proof{min-width:0;gap:14px}.proof-icon{width:35px;height:38px}.proof strong{font-size:.98rem}.proof small{font-size:.78rem}.proof+.proof{border-left:0;padding-left:0}
+main{padding:18px 16px 35px}.section-kicker{font-size:.68rem;gap:10px}.section-kicker:before,.section-kicker:after{width:38px}h2{font-size:1.85rem;margin-bottom:19px}
+.cards{grid-template-columns:1fr;gap:17px}.card-image{height:225px}.card-content{padding:12px 17px 16px}h3{font-size:1.42rem}.desc{min-height:0;font-size:.95rem}.meta{font-size:.79rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+</style>
 </head>
 <body>
-  <header class="hero" id="inicio">
-    <nav class="nav" aria-label="Navegação principal">
-      <a class="brand" href="#inicio" aria-label="Rio Apartments - início">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span><strong>RIO APARTMENTS</strong><small>IPANEMA · LEBLON</small></span>
-      </a>
-      <div class="nav-links">
-        <a href="#apartamentos">Apartamentos</a>
-        <a href="#sobre">Sobre a hospedagem</a>
-      </div>
-    </nav>
-    <div class="hero-content">
-      <p class="eyebrow">Ipanema &amp; Leblon · Rio de Janeiro</p>
-      <h1>Viva o Rio.<br><span>Sinta-se em casa.</span></h1>
-      <p class="hero-copy">Apartamentos selecionados na Zona Sul do Rio de Janeiro, com conforto, localização privilegiada e toda a praticidade do Airbnb.</p>
-      <a class="hero-cta" href="#apartamentos">Conheça nossos apartamentos <span class="arrow" aria-hidden="true">↓</span></a>
-    </div>
-  </header>
-
-  <main id="apartamentos">
-    <div class="section-head">
-      <p class="section-kicker">Sua estadia começa aqui</p>
-      <h2>Nossos apartamentos na Zona Sul</h2>
-      <p>Conforto, estilo e localização privilegiada em Ipanema e Leblon.</p>
-    </div>
-    <section class="cards" aria-label="Apartamentos disponíveis">
-      <article class="card">
-        <div class="card-media"><img src="ipa.avif" alt="Apartamento VIP IPA em Ipanema" loading="lazy"><span class="location">Ipanema</span></div>
-        <div class="card-content">
-          <p class="card-tag">Destaque · Rooftop</p>
-          <h3>VIP IPA</h3>
-          <p class="desc">Apartamento de alto padrão com acesso a rooftop panorâmico e vista de 360° do Rio e seus principais cartões-postais.</p>
-          <div class="features">
-            <span class="feature">✦ Vista 360°</span><span class="feature">✦ Rooftop</span><span class="feature">✦ Ipanema</span>
-          </div>
-          <a class="card-cta" href="https://www.airbnb.com.br/rooms/1747279036411562012?unique_share_id=13507926-6bfc-45f6-8e7b-b1afb8d810d5&viralityEntryPoint=1&s=76" target="_blank" rel="noopener noreferrer" aria-label="Ver VIP IPA no Airbnb">Ver no Airbnb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-media"><img src="green.avif" alt="Apartamento Double Green no Leblon" loading="lazy"><span class="location">Leblon</span></div>
-        <div class="card-content">
-          <p class="card-tag">Natureza &amp; conforto</p>
-          <h3>Double Green</h3>
-          <p class="desc">Serenidade e sofisticação no Leblon. A apenas 6 minutos a pé da praia, cercado por restaurantes, bares e pela vida carioca.</p>
-          <div class="features">
-            <span class="feature">✦ 6 min da praia</span><span class="feature">✦ Design moderno</span><span class="feature">✦ Leblon</span>
-          </div>
-          <a class="card-cta" href="https://www.airbnb.com.br/rooms/1546424493087218972?viralityEntryPoint=1&s=76&source_impression_id=p3_1786461234_P3iH-7tY6zxAQcGO" target="_blank" rel="noopener noreferrer" aria-label="Ver Double Green no Airbnb">Ver no Airbnb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-media"><img src="blue.avif" alt="Studio Blue no Leblon" loading="lazy"><span class="location">Leblon</span></div>
-        <div class="card-content">
-          <p class="card-tag">Estilo &amp; praticidade</p>
-          <h3>Studio Blue</h3>
-          <p class="desc">O equilíbrio entre design moderno e localização imbatível. Um studio elegante e funcional para aproveitar o melhor do bairro.</p>
-          <div class="features">
-            <span class="feature">✦ 6 min da praia</span><span class="feature">✦ Design moderno</span><span class="feature">✦ Leblon</span>
-          </div>
-          <a class="card-cta" href="https://www.airbnb.com.br/rooms/1557915485002194368?viralityEntryPoint=1&s=76&source_impression_id=p3_1786461196_P3W7WPPY-ZBM3DiV" target="_blank" rel="noopener noreferrer" aria-label="Ver Studio Blue no Airbnb">Ver no Airbnb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></svg></a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-media"><img src="oliva.avif" alt="Apartamento Oliva no Leblon" loading="lazy"><span class="location">Leblon</span></div>
-        <div class="card-content">
-          <p class="card-tag">Conforto &amp; economia</p>
-          <h3>Oliva</h3>
-          <p class="desc">Apartamento reformado para até 4 pessoas, com ótima localização próximo a mercados, bares, praia e Lagoa Rodrigo de Freitas.</p>
-          <div class="features">
-            <span class="feature">✦ Até 4 hóspedes</span><span class="feature">✦ Reformado</span><span class="feature">✦ Leblon</span>
-          </div>
-          <a class="card-cta" href="https://www.airbnb.com.br/rooms/1790201971585175550?check_in=2026-10-09&check_out=2026-10-12&guests=4&adults=2&s=67&unique_share_id=5194791d-8adb-40d2-8a4c-dc01dd45d600" target="_blank" rel="noopener noreferrer" aria-label="Ver Oliva no Airbnb">Ver no Airbnb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3h7v7M10 14 21 3"/><path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6"/></svg></a>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <section class="trust" id="sobre" aria-label="Diferenciais">
-    <div class="trust-inner">
-      <div class="trust-item"><span class="trust-icon" aria-hidden="true">⌖</span><div><strong>Localização privilegiada</strong><span>Ipanema e Leblon</span></div></div>
-      <div class="trust-item"><span class="trust-icon" aria-hidden="true">⌂</span><div><strong>Apartamentos preparados</strong><span>Conforto para sua estadia</span></div></div>
-      <div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><div><strong>Reservas pelo Airbnb</strong><span>Consulte anúncios e avaliações</span></div></div>
-    </div>
-  </section>
-  <footer>
-    <p>© 2026 · Rio Apartments · Ipanema &amp; Leblon, Rio de Janeiro</p>
-    <p>Reservas e disponibilidade diretamente nos anúncios do <a href="https://www.airbnb.com.br" target="_blank" rel="noopener noreferrer">Airbnb</a>.</p>
-  </footer>
-</body>
-</html>
+<header class="topbar">
+<a class="brand" href="#inicio" aria-label="Rio Apartments - início">
+<svg class="brand-mark" viewBox="0 0 90 48" fill="none" aria-hidden="true"><path d="M3 40C18 35 25 8 40 8C53 8 55 31 67 31C76 31 81 18 88 11" stroke="#F3C46D" stroke-width="2.5" stroke-linecap="round"/></svg>
+<span><span class="brand-name">RIO APARTMENTS</span><span class="brand-sub">IPANEMA · LEBLON</span></span></a>
+<nav class="navlinks" aria-label="Navegação"><a href="#apartamentos">Apartamentos</a><a href="#localizacao">Localização</a><a href="#diferenciais">Diferenciais</a><a class="nav-cta" href="tel:+5521986394461" aria-label="Ligar para +55 21 98639-4461">☎ &nbsp;+55 21 98639-4461</a></nav>
+</header>
+<main id="inicio" style="max-width:none;padding:0">
+<a href="#apartamentos" aria-label="Conheça nossos apartamentos"><img class="hero-desktop" src="hero-rio-sunset.webp" alt="Pôr do sol na praia de Ipanema, com o Morro Dois Irmãos e a chamada Viva o Rio. Sinta-se em casa."></a>
+<section class="hero-mobile">
+<div class="eyebrow">Ipanema &amp; Leblon · Rio de Janeiro</div>
+<h1>Viva o Rio.<br><span>Sinta-se em casa.</span></h1>
+<p>Apartamentos selecionados na Zona Sul do Rio de Janeiro, com conforto, localização privilegiada e acesso direto no Airbnb.</p>
+<a class="mobile-cta" href="#apartamentos">Conheça nossos apartamentos ↓</a>
+</section>
+<section class="proofs" id="localizacao">
+<div class="proof"><svg class="proof-icon" viewBox="0 0 48 52" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 47S7 29 7 19a17 17 0 1 1 34 0c0 10-17 28-17 28Z"/><circle cx="24" cy="19" r="5"/></svg><div><strong>Zona Sul do Rio</strong><small>Ipanema e Leblon</small></div></div>
+<div class="proof"><svg class="proof-icon" viewBox="0 0 48 52" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 25h38v21H5zM10 25V9h28v16M10 17h28M17 9v8m14-8v8"/></svg><div><strong>Conforto e Estrutura</strong><small>Apartamentos modernos e completos</small></div></div>
+<div class="proof" id="diferenciais"><svg class="proof-icon" viewBox="0 0 48 52" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 3 43 10v14c0 12-8 20-19 25C13 44 5 36 5 24V10L24 3Z"/><path d="m15 25 6 6 13-14"/></svg><div><strong>Reservas Seguras</strong><small>Diretamente pelo Airbnb</small></div></div>
+</section>
+<section style="max-width:1450px;margin:auto;padding:10px 3.7% 50px" id="apartamentos">
+<div class="section-kicker">NOSSAS HOSPEDAGENS</div><h2>Encontre seu lugar no Rio</h2>
+<div class="cards">
+<article class="card"><div class="card-image"><img src="ipa.avif" alt="Área de rooftop do VIP IPA" loading="lazy"><span class="tag">ROOFTOP · VISTA 360°</span></div><div class="card-content"><h3>VIP IPA</h3><div class="place">⌖ Ipanema</div><p class="desc">Apartamento moderno com rooftop, sauna, hidromassagem e vista incrível do Rio.</p><div class="meta"><span>▤ 1 quarto</span><span>♙ 2 hóspedes</span><span>⌁ Wi-Fi</span></div><a class="airbnb-btn" href="https://www.airbnb.com.br/rooms/1747279036411562012?unique_share_id=13507926-6bfc-45f6-8e7b-b1afb8d810d5&viralityEntryPoint=1&s=76" target="_blank" rel="noopener noreferrer">♧ &nbsp;Ver no Airbnb&nbsp; →</a></div></article>
+<article class="card"><div class="card-image"><img src="green.avif" alt="Interior do Double Green" loading="lazy"><span class="tag">2 QUARTOS</span></div><div class="card-content"><h3>Double Green</h3><div class="place">⌖ Leblon</div><p class="desc">Moderno, renovado e completo, a poucos minutos da praia do Leblon.</p><div class="meta"><span>▤ 2 quartos</span><span>♙ 4 hóspedes</span><span>⌁ Wi-Fi</span></div><a class="airbnb-btn" href="https://www.airbnb.com.br/rooms/1546424493087218972?viralityEntryPoint=1&s=76&source_impression_id=p3_1786461234_P3iH-7tY6zxAQcGO" target="_blank" rel="noopener noreferrer">♧ &nbsp;Ver no Airbnb&nbsp; →</a></div></article>
+<article class="card"><div class="card-image"><img src="blue.avif" alt="Interior do Studio Blue" loading="lazy"><span class="tag">STUDIO</span></div><div class="card-content"><h3>Studio Blue</h3><div class="place">⌖ Leblon</div><p class="desc">Studio charmoso, funcional e totalmente equipado, ideal para sua estadia no Rio.</p><div class="meta"><span>▤ Studio</span><span>♙ 2 hóspedes</span><span>⌁ Wi-Fi</span></div><a class="airbnb-btn" href="https://www.airbnb.com.br/rooms/1557915485002194368?viralityEntryPoint=1&s=76&source_impression_id=p3_1786461196_P3W7WPPY-ZBM3DiV" target="_blank" rel="noopener noreferrer">♧ &nbsp;Ver no Airbnb&nbsp; →</a></div></article>
+<article class="card"><div class="card-image"><img src="oliva.avif" alt="Interior do apartamento Oliva" loading="lazy"><span class="tag">ATÉ 4 HÓSPEDES</span></div><div class="card-content"><h3>Oliva</h3><div class="place">⌖ Leblon</div><p class="desc">Conforto, praticidade e ótima localização no coração do Leblon.</p><div class="meta"><span>▤ 1 quarto</span><span>♙ 4 hóspedes</span><span>⌁ Wi-Fi</span></div><a class="airbnb-btn" href="https://www.airbnb.com.br/rooms/1790201971585175550?check_in=2026-10-09&check_out=2026-10-12&guests=4&adults=2&s=67&unique_share_id=5194791d-8adb-40d2-8a4c-dc01dd45d600" target="_blank" rel="noopener noreferrer">♧ &nbsp;Ver no Airbnb&nbsp; →</a></div></article>
+</div></section>
+</main>
+<footer>© 2026 · Rio Apartments · Ipanema &amp; Leblon, Rio de Janeiro<br>Reservas e disponibilidade diretamente nos anúncios do <a href="https://www.airbnb.com.br" target="_blank" rel="noopener">Airbnb</a>.</footer>
+</body></html>
